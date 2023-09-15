@@ -1,9 +1,22 @@
 const express = require("express");
-const {createCategoryCtrl, fetchCategoriesCtrl, fetchCategoryCtrl, updateCategoryCtrl} = require("../controllers/category");
+const {
+  createCategoryCtrl,
+  fetchCategoriesCtrl,
+  fetchCategoryCtrl,
+  updateCategoryCtrl,
+  deleteCategoryCtrl,
+} = require("../controllers/category");
 const authMiddleware = require("../middlewares/auth");
 const router = express.Router();
 
-router.route("/").post(authMiddleware, createCategoryCtrl).get(authMiddleware, fetchCategoriesCtrl);
-router.route("/:id").get(authMiddleware, fetchCategoryCtrl).put(authMiddleware, updateCategoryCtrl);
+router
+  .route("/:id")
+  .get(authMiddleware, fetchCategoryCtrl)
+  .put(authMiddleware, updateCategoryCtrl)
+  .delete(authMiddleware, deleteCategoryCtrl);
+router
+  .route("/")
+  .post(authMiddleware, createCategoryCtrl)
+  .get(authMiddleware, fetchCategoriesCtrl);
 
 module.exports = router;
