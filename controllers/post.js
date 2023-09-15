@@ -39,16 +39,16 @@ const createPostCtrl = asyncWrapper(async (req, res) => {
     );
   }
 
-  const localPath = `public/images/posts/${req.file.filename}`;
-  const uploadedImg = await cloudinaryUploadImg(localPath);
+  // const localPath = `public/images/posts/${req.file.filename}`;
+  // const uploadedImg = await cloudinaryUploadImg(localPath);
 
   const post = await Post.create({
     ...req.body,
-    image: uploadedImg.url,
+    // image: uploadedImg.url,
     user: req.user._id,
   });
   res.json(post);
-  fs.unlinkSync(localPath);
+  // fs.unlinkSync(localPath);
 });
 
 const fetchPostsCtrl = asyncWrapper(async (req, res) => {

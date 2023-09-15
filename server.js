@@ -7,6 +7,7 @@ const userRoutes = require("./routes/user");
 const postRoutes = require("./routes/post");
 const commentRoutes = require("./routes/comment");
 const emailRoutes = require("./routes/email");
+const categoryRoutes = require("./routes/category");
 const notFound = require("./middlewares/not-found");
 const errorHandlerMiddleware = require("./middlewares/error-handler");
 
@@ -18,6 +19,7 @@ app.use("/api/v1/users", userRoutes);
 app.use("/api/v1/posts", postRoutes);
 app.use("/api/v1/comments", commentRoutes);
 app.use("/api/v1/emails", emailRoutes);
+app.use("/api/v1/categories", categoryRoutes);
 app.use(notFound);
 app.use(errorHandlerMiddleware);
 
