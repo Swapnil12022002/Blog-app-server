@@ -1,6 +1,7 @@
 const express = require("express");
 const app = express();
 const cookieParser = require("cookie-parser");
+const cors = require("cors");
 require("dotenv").config({ path: "config/config.env" });
 const connectDB = require("./config/database");
 const userRoutes = require("./routes/user");
@@ -12,6 +13,7 @@ const notFound = require("./middlewares/not-found");
 const errorHandlerMiddleware = require("./middlewares/error-handler");
 
 app.use(express.json());
+app.use(cors());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 
